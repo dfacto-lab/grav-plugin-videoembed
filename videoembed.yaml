@@ -63,7 +63,7 @@ services:
             type  : 'simple'
     videoJS:
         enabled : true
-        assets  : ["http://vjs.zencdn.net/4.8/video.js", "http://vjs.zencdn.net/4.8/video-js.css"]
+        assets  : ["//vjs.zencdn.net/7.10.2/video.min.js", "//vjs.zencdn.net/7.10.2/video-js.min.css"]
         embed_html_attr:
             class           : 'video-js vjs-default-skin'
             frameborder     : 0

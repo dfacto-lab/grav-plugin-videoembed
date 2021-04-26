@@ -1,4 +1,5 @@
 <?php
+
 namespace Grav\Plugin;
 
 use Grav\Common\Assets;
@@ -31,21 +32,11 @@ class VideoEmbedPlugin extends Plugin
     public static function getSubscribedEvents()
     {
         return [
-            'onTwigSiteVariables' => ['onTwigSiteVariables', 0],
-            'onPageProcessed' => ['onPageProcessed', 0],
+            'onPageContentProcessed' => ['onPageProcessed', 0],
         ];
     }
 
-    /**
-     * Add styles for video responsiveness
-     * @see onPageInitialized
-     * @return void
-     * @codeCoverageIgnore
-     */
-    public function onTwigSiteVariables()
-    {
-        $this->addAssets($this->grav['page'], $this->grav['assets']);
-    }
+
 
     /**
      * Process links in page
@@ -63,11 +54,8 @@ class VideoEmbedPlugin extends Plugin
         $config = $this->getConfig($page);
 
         $content = $this->processPage($page, $config);
-
-        $isProcessMarkdown = $page->shouldProcess('markdown');
-        $page->process(['markdown' => false]);
-        $page->content($content);
-        $page->process(['markdown' => $isProcessMarkdown]);
+        $page->setRawContent($content);
+        $this->addAssets($this->grav['page'], $this->grav['assets']);
     }
 
     /**
@@ -79,7 +67,7 @@ class VideoEmbedPlugin extends Plugin
     protected function getServiceByName($serviceName, array $serviceConfig = [])
     {
         $serviceName = ucfirst($serviceName);
-        $servicePath = __DIR__."/src/Service/$serviceName.php";
+        $servicePath = __DIR__ . "/src/Service/$serviceName.php";
         $serviceClass = "\\Grav\\Plugin\\VideoEmbed\\Service\\$serviceName";
 
         if (!file_exists($servicePath)) {
@@ -138,6 +126,7 @@ class VideoEmbedPlugin extends Plugin
         }
 
         $container = $this->getEmbedContainer($config);
+
         $services = array_filter(
             (array)$config->get('services', []),
             function ($service) {
@@ -146,7 +135,8 @@ class VideoEmbedPlugin extends Plugin
         );
 
         $usedServices = [];
-        $content = $page->content();
+        $content = $page->getRawContent();
+
         foreach ($services as $serviceName => $serviceConfig) {
             $service = $this->getServiceByName($serviceName, $serviceConfig);
             $content = $service->processHtml($content, $container, $processedCnt);
@@ -232,6 +222,7 @@ class VideoEmbedPlugin extends Plugin
     }
 
     /**
+     * Add styles for video responsiveness
      * Add plugin specific assets
      * @param Page $page
      * @param Assets $assets
@@ -239,6 +230,7 @@ class VideoEmbedPlugin extends Plugin
     protected function addAssets(Page $page, Assets $assets)
     {
         $pluginAssets = [];
+
         if (!empty($page->header()->videoembed['assets'])) {
             $pluginAssets = (array)$page->header()->videoembed['assets'];
         }
@@ -271,8 +263,8 @@ class VideoEmbedPlugin extends Plugin
     /**
      * Merge options recursively
      *
-     * @param  array $array1
-     * @param  mixed $array2
+     * @param array $array1
+     * @param mixed $array2
      * @return array
      * @codeCoverageIgnore
      */

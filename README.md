@@ -1,13 +1,15 @@
-Project closed. See actual plugin version [here](https://github.com/Sommerregen/grav-plugin-videoembed)
-===========================================================================================
 
 Embed Video plugin for [Grav CMS](http://getgrav.org)
 -------------------------------------------------
+Fork from https://github.com/maximkou/grav-plugin-videoembed works with grav 1.x.x
 
-[![Build Status](https://travis-ci.org/maximkou/grav-plugin-videoembed.svg?branch=v1.0)](https://travis-ci.org/maximkou/grav-plugin-videoembed)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/maximkou/grav-plugin-videoembed/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/maximkou/grav-plugin-videoembed/?branch=master)
-[![Code Coverage](https://scrutinizer-ci.com/g/maximkou/grav-plugin-videoembed/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/maximkou/grav-plugin-videoembed/?branch=master)
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/127bf39f-d49a-4c9b-965d-2eb97e384fe4/mini.png)](https://insight.sensiolabs.com/projects/127bf39f-d49a-4c9b-965d-2eb97e384fe4)
+[comment]: <> ([![Build Status]&#40;https://travis-ci.org/maximkou/grav-plugin-videoembed.svg?branch=v1.0&#41;]&#40;https://travis-ci.org/maximkou/grav-plugin-videoembed&#41;)
+
+[comment]: <> ([![Scrutinizer Code Quality]&#40;https://scrutinizer-ci.com/g/maximkou/grav-plugin-videoembed/badges/quality-score.png?b=master&#41;]&#40;https://scrutinizer-ci.com/g/maximkou/grav-plugin-videoembed/?branch=master&#41;)
+
+[comment]: <> ([![Code Coverage]&#40;https://scrutinizer-ci.com/g/maximkou/grav-plugin-videoembed/badges/coverage.png?b=master&#41;]&#40;https://scrutinizer-ci.com/g/maximkou/grav-plugin-videoembed/?branch=master&#41;)
+
+[comment]: <> ([![SensioLabsInsight]&#40;https://insight.sensiolabs.com/projects/127bf39f-d49a-4c9b-965d-2eb97e384fe4/mini.png&#41;]&#40;https://insight.sensiolabs.com/projects/127bf39f-d49a-4c9b-965d-2eb97e384fe4&#41;)
 
 This plugin convert links to videos from popular sharing services to embed format. Supported services:
 
